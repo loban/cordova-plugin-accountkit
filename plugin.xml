@@ -142,6 +142,10 @@
         <!-- AccountKit framework -->
         <framework src="AccountKit" type="podspec" spec="~> 4" />
 
+        <!-- Google Play Services framework -->
+        <preference name="GMS_VERSION" default="11.+"/>
+        <framework src="com.google.android.gms:play-services-auth:$GMS_VERSION" />
+        <framework src="com.google.android.gms:play-services-identity:$GMS_VERSION" />
 
     </platform>
 </plugin>
