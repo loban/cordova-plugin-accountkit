@@ -91,6 +91,11 @@
 
         <framework src="com.facebook.android:account-kit-sdk:4.+"/>
 
+        <!-- Google Play Services framework -->
+        <preference name="GMS_VERSION" default="11.+"/>
+        <framework src="com.google.android.gms:play-services-auth:$GMS_VERSION" />
+        <framework src="com.google.android.gms:play-services-identity:$GMS_VERSION" />
+
         <source-file src="src/android/AccountKitPlugin.java" target-dir="src/org/apache/cordova/facebook" />
     </platform>
 
@@ -141,11 +146,5 @@
 
         <!-- AccountKit framework -->
         <framework src="AccountKit" type="podspec" spec="~> 4" />
-
-        <!-- Google Play Services framework -->
-        <preference name="GMS_VERSION" default="11.+"/>
-        <framework src="com.google.android.gms:play-services-auth:$GMS_VERSION" />
-        <framework src="com.google.android.gms:play-services-identity:$GMS_VERSION" />
-
     </platform>
 </plugin>
