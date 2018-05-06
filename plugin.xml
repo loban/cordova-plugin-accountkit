@@ -139,6 +139,8 @@
 
         <!-- AccountKit framework -->
         <framework src="AccountKit" type="podspec" spec="~> 4" />
+        <framework src="com.google.android.gms:play-services-auth:+" />
+        <framework src="com.google.android.gms:play-services-identity:+" />
 
 
     </platform>
