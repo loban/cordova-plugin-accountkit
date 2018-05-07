@@ -71,6 +71,10 @@
             <string name="accountkit_token">$CLIENT_TOKEN</string>
         </config-file>
 
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECEIVE_SMS" />
+        </config-file>
+        
         <config-file target="AndroidManifest.xml" parent="application">
             <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/fb_app_id" />
             <meta-data android:name="com.facebook.accountkit.ApplicationName" android:value="@string/fb_app_name" />
@@ -88,7 +92,7 @@
         </config-file>
 
         <framework src="com.facebook.android:account-kit-sdk:4.+"/>
-
+        <framework src="com.google.android.gms:play-services-base:$GMS_VERSION" />
         <source-file src="src/android/AccountKitPlugin.java" target-dir="src/org/apache/cordova/facebook" />
     </platform>
 
