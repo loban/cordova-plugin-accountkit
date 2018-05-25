@@ -102,7 +102,7 @@ public class AccountKitSampleAdvancedUIManager extends BaseUIManager {
     @Nullable
     public Fragment getHeaderFragment(final LoginFlowState state) {
         if (state != LoginFlowState.ERROR) {
-            return getPlaceholderFragment(state, HEADER_HEIGHT, " This is header");
+            return getPlaceholderFragment(state, HEADER_HEIGHT, " Header");
         }
         final String errorMessage = getErrorMessage();
         if (errorMessage == null) {
@@ -141,69 +141,6 @@ public class AccountKitSampleAdvancedUIManager extends BaseUIManager {
             final LoginFlowState state,
             final int height,
             final String suffix) {
-        final String prefix;
-        switch (state) {
-            case PHONE_NUMBER_INPUT:
-                prefix = "Custom Phone Number ";
-                break;
-            case EMAIL_INPUT:
-                prefix = "Custom Email ";
-                break;
-            case ACCOUNT_VERIFIED:
-                prefix = "Custom Account Verified ";
-                break;
-            case CONFIRM_ACCOUNT_VERIFIED:
-                prefix = "Custom Confirm Account Verified ";
-                break;
-            case CONFIRM_INSTANT_VERIFICATION_LOGIN:
-                prefix = "Custom Confirm Instant Verification Login ";
-                break;
-            case EMAIL_VERIFY:
-                prefix = "Custom Email Verify ";
-                break;
-            case SENDING_CODE:
-                switch (loginType) {
-                    case EMAIL:
-                        prefix = "Custom Sending Email ";
-                        break;
-                    case PHONE:
-                        prefix = "Custom Sending Code ";
-                        break;
-                    default:
-                        return null;
-                }
-                break;
-            case SENT_CODE:
-                switch (loginType) {
-                    case EMAIL:
-                        prefix = "Custom Sent Email ";
-                        break;
-                    case PHONE:
-                        prefix = "Custom Sent Code ";
-                        break;
-                    default:
-                        return null;
-                }
-                break;
-            case CODE_INPUT:
-                prefix = "Custom Code Input ";
-                break;
-            case VERIFYING_CODE:
-                prefix = "Custom Verifying ";
-                break;
-            case VERIFIED:
-                prefix = "Custom Verified ";
-                break;
-            case RESEND:
-                prefix = "Custom Resend ";
-                break;
-            case ERROR:
-                prefix = "Custom Error ";
-                break;
-            default:
-                return null;
-        }
-        //return PlaceholderFragment.create(height, prefix.concat(suffix));
         return PlaceholderFragment.create(height, suffix);
     }
 
