@@ -27,6 +27,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import co.jeeon.projotno.elearning.develop.R;
@@ -88,12 +89,22 @@ public class PlaceholderFragment extends Fragment {
             final String text = arguments.getString(TEXT_KEY);
             final int textResourceId = arguments.getInt(TEXT_RESOURCE_ID_KEY, -1);
             final TextView textView = (TextView) view.findViewById(R.id.text_view);
-            if (textView != null) {
-                if (text != null) {
-                    textView.setText(text);
-                } else if (textResourceId > 0) {
-                    textView.setText(textResourceId);
+            final ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+            if (textView != null && imageView!=null) {
+                if(height==100){
+                    imageView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+                }else {
+                    if (text != null) {
+                        textView.setText(text);
+                    } else if (textResourceId > 0) {
+                        textView.setText(textResourceId);
+                    }
+                    imageView.setVisibility(View.GONE);
+                    textView.setVisibility(View.VISIBLE);
                 }
+
+
             }
         }
 

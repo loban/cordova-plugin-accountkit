@@ -23,6 +23,7 @@ package org.apache.cordova.facebook;
 import android.app.Fragment;
 import android.os.Parcel;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.facebook.accountkit.AccountKitError;
 import com.facebook.accountkit.ui.BaseUIManager;
@@ -36,7 +37,7 @@ import co.jeeon.projotno.elearning.develop.R;
 public class AccountKitSampleAdvancedUIManager extends BaseUIManager {
     private static final int BODY_HEIGHT = 80;
     private static final int FOOTER_HEIGHT = 120;
-    private static final int HEADER_HEIGHT = 80;
+    private static final int HEADER_HEIGHT = 100;
 
     private final ButtonType confirmButton;
     private final ButtonType entryButton;
@@ -74,7 +75,14 @@ public class AccountKitSampleAdvancedUIManager extends BaseUIManager {
     @Override
     @Nullable
     public Fragment getBodyFragment(final LoginFlowState state) {
-        return getPlaceholderFragment(state, BODY_HEIGHT, "This is Body");
+        Log.d("State-Body",state.compareTo(LoginFlowState.PHONE_NUMBER_INPUT)+"");
+        if(state.name().equals("PHONE_NUMBER_INPUT"))
+            return getPlaceholderFragment(state, BODY_HEIGHT, "উপরের বক্সে ক্লিক করে আপনার ফোন নাম্বার লিখুন");
+        else if(state.name().equals("CODE_INPUT"))
+            return getPlaceholderFragment(state, FOOTER_HEIGHT, "আপনার নাম্বারে পাঠানো কোডটি উপরের বক্সে আসা পযন্ত অপেক্ষা করুন।");
+        else
+            return getPlaceholderFragment(state, FOOTER_HEIGHT, "অপেক্ষা করুন।");
+
     }
 
     @Override
@@ -95,12 +103,20 @@ public class AccountKitSampleAdvancedUIManager extends BaseUIManager {
     @Override
     @Nullable
     public Fragment getFooterFragment(final LoginFlowState state) {
-        return getPlaceholderFragment(state, FOOTER_HEIGHT, "Footer");
+        Log.d("State-footer",state.name());
+        if(state.name().equals("PHONE_NUMBER_INPUT"))
+            return getPlaceholderFragment(state, FOOTER_HEIGHT, "\'NEXT\' বাটনে ক্লিক করে আপনি আমাদের \'শর্তাবলী\' মেনে নিচ্ছেন বলে স্বীকার করছেন।");
+        else if(state.name().equals("CODE_INPUT"))
+            return getPlaceholderFragment(state, FOOTER_HEIGHT, "অথবা আপনার নাম্বারে পাঠানো কোডটি উপরের বক্সে নিজে লিখুন \n");
+        else
+            return getPlaceholderFragment(state, FOOTER_HEIGHT, "অপেক্ষা করুন।");
+
     }
 
     @Override
     @Nullable
     public Fragment getHeaderFragment(final LoginFlowState state) {
+        Log.d("State-header",state.name());
         if (state != LoginFlowState.ERROR) {
             return getPlaceholderFragment(state, HEADER_HEIGHT, " Header");
         }
