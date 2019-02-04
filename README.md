@@ -5,6 +5,7 @@ Cordova AccountKit Plugin
 
 The Apache Cordova wrapper around the Facebook [AccountKit](https://www.accountkit.com/).
 
+**This fork allows the plugin to be installed alongside cordova-plugin-facebook4**
 
 ## Installation
 
