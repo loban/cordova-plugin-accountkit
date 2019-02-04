@@ -25,6 +25,10 @@ import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
 
+import com.facebook.accountkit.ui.ButtonType;
+import com.facebook.accountkit.ui.LoginType;
+import com.facebook.accountkit.ui.TextPosition;
+import com.facebook.accountkit.ui.UIManager;
 
 public class AccountKitPlugin extends CordovaPlugin {
   public static final String TAG = "AccountKitPlugin";
@@ -130,6 +134,17 @@ public class AccountKitPlugin extends CordovaPlugin {
       configurationBuilder.setInitialEmail(options.optString("initialEmail", null));
     }
 
+    UIManager uiManager;
+    ButtonType confirmButton=ButtonType.CONFIRM;
+    ButtonType entryButton=ButtonType.NEXT;
+    TextPosition textPosition=TextPosition.ABOVE_BODY;
+    LoginType loginType=LoginType.PHONE;
+    uiManager = new AccountKitSampleAdvancedUIManager(
+            confirmButton,
+            entryButton,
+            textPosition,
+            loginType);
+    configurationBuilder.setUIManager(uiManager);
     intent.putExtra(AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION, configurationBuilder.build());
 
     cordova.setActivityResultCallback(this);

@@ -2,8 +2,8 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-accountkit"
-    version="1.4.0">
+        id="cordova-plugin-accountkit"
+        version="1.4.0">
     <name>Cordova AccountKit</name>
     <description></description>
     <license>MIT</license>
@@ -24,23 +24,23 @@
     <!-- browser -->
     <platform name="browser">
         <config-file target="config.xml" parent="/*">
-          <feature name="AccountKitPlugin">
-              <param name="browser-package" value="AccountKitPlugin" />
-          </feature>
+            <feature name="AccountKitPlugin">
+                <param name="browser-package" value="AccountKitPlugin" />
+            </feature>
         </config-file>
 
         <js-module src="src/browser/AccountKitPluginProxy.js" name="AccountKitPluginProxy">
-          <runs/>
-          <clobbers target="AccountKitPlugin" />
+            <runs/>
+            <clobbers target="AccountKitPlugin" />
         </js-module>
 
         <js-module src="src/browser/AccountKitOnInteractive.js" name="AccountKit_OnInteractive">
-          <runs/>
-          <clobbers target="AccountKit_OnInteractive" />
+            <runs/>
+            <clobbers target="AccountKit_OnInteractive" />
         </js-module>
 
         <js-module src="src/browser/AccountKitSDK.js" name="AccountKitSDK">
-          <runs/>
+            <runs/>
         </js-module>
 
         <hook type="after_plugin_add" src="src/browser/afterInstall.js"/>
@@ -51,6 +51,7 @@
         <js-module src="www/plugin.js" name="plugin">
             <runs/>
             <clobbers target="AccountKitPlugin" />
+
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AccountKitPlugin">
@@ -70,6 +71,13 @@
             <string name="accountkit_fb_app_name">$APP_NAME</string>
             <string name="accountkit_fb_app_id">$APP_ID</string>
             <string name="accountkit_token">$CLIENT_TOKEN</string>
+        </config-file>
+
+        <source-file src="src/android/fragment_placeholder.xml" target-dir="res/layout" />
+
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECEIVE_SMS" />
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="application">
@@ -98,8 +106,10 @@
         <preference name="GMS_VERSION" default="11.+"/>
         <framework src="com.google.android.gms:play-services-auth:$GMS_VERSION" />
         <framework src="com.google.android.gms:play-services-identity:$GMS_VERSION" />
-
+        <framework src="com.google.android.gms:play-services-base:$GMS_VERSION" />
         <source-file src="src/android/AccountKitPlugin.java" target-dir="src/org/apache/cordova/facebook" />
+        <source-file src="src/android/AccountKitSampleAdvancedUIManager.java" target-dir="src/org/apache/cordova/facebook" />
+        <source-file src="src/android/PlaceholderFragment.java" target-dir="src/org/apache/cordova/facebook" />
     </platform>
 
     <!-- ios -->
@@ -133,14 +143,14 @@
         </config-file>
 
         <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-          <array>
-            <dict>
-              <key>CFBundleURLSchemes</key>
-              <array>
-                <string>ak$APP_ID</string>
-              </array>
-            </dict>
-          </array>
+            <array>
+                <dict>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>ak$APP_ID</string>
+                    </array>
+                </dict>
+            </array>
         </config-file>
 
         <config-file target="*-Info.plist" parent="AccountKitFacebookAppEventsEnabled">
