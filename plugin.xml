@@ -72,6 +72,8 @@
             <string name="accountkit_token">$CLIENT_TOKEN</string>
         </config-file>
 
+        <source-file src="src/android/fragment_placeholder.xml" target-dir="res/layout" />
+
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.RECEIVE_SMS" />
         </config-file>
