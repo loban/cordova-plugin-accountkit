@@ -51,7 +51,6 @@
         <js-module src="www/plugin.js" name="plugin">
             <runs/>
             <clobbers target="AccountKitPlugin" />
-
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AccountKitPlugin">
@@ -73,13 +72,10 @@
             <string name="accountkit_token">$CLIENT_TOKEN</string>
         </config-file>
 
-        <source-file src="src/android/fragment_placeholder.xml" target-dir="res/layout" />
-
-
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.RECEIVE_SMS" />
         </config-file>
-
+        
         <config-file target="AndroidManifest.xml" parent="application">
             <!-- FIXME: Already specified by cordova-plugin-facebook4 -->
             <!--<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/accountkit_fb_app_id" />-->
